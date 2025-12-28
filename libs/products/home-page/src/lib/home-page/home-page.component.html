@@ -1,17 +1,26 @@
-<ul>
-  @for (product of products | async; track product) {
-  <li>
-    <a [routerLink]="['/product', product.id]">
-      <figure>
-        <img [src]="product.image" />
-      </figure>
-      <h2>{{ product.name }}</h2>
-      <p>
-        <nx-example-product-price
-          [value]="product.price"
-        ></nx-example-product-price>
-      </p>
-    </a>
-  </li>
-  }
-</ul>
+<div class="hero-section">
+  <h1 class="hero-title">Discover Amazing Products</h1>
+  <p class="hero-subtitle">Explore our curated collection of premium items</p>
+</div>
+
+<div class="products-container">
+  <ul class="products-grid">
+    @for (product of products | async; track product) {
+    <li class="product-card">
+      <a [routerLink]="['/product', product.id]" class="product-link">
+        <figure class="product-image-wrapper">
+          <img [src]="product.image" [alt]="product.name" class="product-image" />
+        </figure>
+        <div class="product-info">
+          <h2 class="product-name">{{ product.name }}</h2>
+          <p class="product-price">
+            <nx-example-product-price
+              [value]="product.price"
+            ></nx-example-product-price>
+          </p>
+        </div>
+      </a>
+    </li>
+    }
+  </ul>
+</div>
